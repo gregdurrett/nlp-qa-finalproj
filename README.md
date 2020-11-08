@@ -149,7 +149,6 @@ We can benchmark our model using the evaluation script, passing in the SQuAD dev
 $ python3 evaluate.py \
     --dataset_path "datasets/squad_dev.jsonl.gz" \
     --output_path "squad_predictions.txt"
-{'EM': 49.71, 'F1': 62.35}
 ```
 
 The single-model [state-of-the-art](https://rajpurkar.github.io/SQuAD-explorer/) on SQuAD is currently held by [ELECTRA](https://arxiv.org/abs/2003.10555), a pre-trained Transformer, which gets 88.11 EM and 91.42 F1 -- our baseline has a lot of room for improvement!
