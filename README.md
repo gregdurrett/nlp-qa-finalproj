@@ -178,9 +178,9 @@ We provide the following pre-trained baseline models and output prediction files
 
 | Model                        | Hidden Dim | Parameters | SQuAD Dev EM/F1 | Train & Test Time |     Output File    |
 |------------------------------|:----------:|:----------:|:---------------:|:-----------------:|:------------------:|
-| [`baseline_small_squad.pt`](https://utexas.box.com/s/js0tpv0f1r69ox4afawnmyo671s9o25c)  |     128    |  16M  |   48.19/60.58   |       9m 47s      |       [Link](https://utexas.box.com/s/umkya833pf5z4y3f008fwmlmslh54hed)       |
-| [`baseline_medium_squad.pt`](https://utexas.box.com/s/695hv0g0ow5izhi6xc61tl2r39r70v3s) |     256    |  18M  |   48.86/61.21   |      13m 50s      |       [Link](https://utexas.box.com/s/1q73rrebovzi4z7wso1cz1ehwr1mrr9j)       |
-| [`baseline_large_squad.pt`](https://utexas.box.com/s/tmqwqjwwz9quutkpd4of5g4r6vvgixsm)  |     512    |  25M  |   49.39/61.72   |      24m 25s      |       [Link](https://utexas.box.com/s/lzbb8pvd7wgpzvmzozosseqa0514yfkw)       |
+| [`baseline_small_squad.pt`](https://utexas.box.com/s/fcpfgew6ie94tryvf302ylegtvvxcg2f)  |     128    |  16M  |   48.19/60.58   |       9m 47s      |       [NA]
+| [`baseline_medium_squad.pt`](https://utexas.box.com/s/0mzgmhey5au9p4r6bbtuq7hju8fxltyi) |     256    |  18M  |   48.86/61.21   |      13m 50s      |       [NA]
+| [`baseline_large_squad.pt`](https://utexas.box.com/s/j6tfq47rfle1qu1c2mi09riwovvdyjp1)  |     512    |  25M  |   49.39/61.72   |      24m 25s      |       [NA]
 
 Usage is largely the same as the previous examples; make sure to pass in the appropriate hidden dimension when invoking the script. For example, to use the baseline-small model for testing:
 
