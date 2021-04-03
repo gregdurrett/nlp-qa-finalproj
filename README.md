@@ -1,6 +1,6 @@
-# CS378 NLP Spring 2020 QA Final Project
+# NLP QA Final Project
 
-This repository contains starter code for the CS378 Natural Language Processing (Spring 2020) final project on question answering. For specific details on deliverables and deadlines, please refer to the [final project spec](https://www.cs.utexas.edu/~gdurrett/courses/sp2020/fp.pdf).
+This repository contains starter code for the Natural Language Processing final project on question answering. For specific details on deliverables and deadlines, please refer to the final project spec posted on the course website.
 
 Authors: Shrey Desai, Yasumasa Onoe, and Greg Durrett
 
@@ -20,7 +20,7 @@ Authors: Shrey Desai, Yasumasa Onoe, and Greg Durrett
 To begin, clone this repository onto your local machine:
 
 ```bash
-$ git clone https://github.com/gregdurrett/cs378nlp-sp20-fp.git
+$ git clone https://github.com/gregdurrett/nlp-qa-finalproj.git
 ```
 
 This project requires Python 3.6+ and the following dependencies:
