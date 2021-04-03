@@ -174,13 +174,11 @@ $ python3 evaluate.py \
 
 ### Using Pre-trained Models
 
-We provide the following pre-trained baseline models and output prediction files. Models are benchmarked using a NVIDIA Tesla K80 GPU on GCP:
+We provide the following pre-trained baseline model. Models are benchmarked using a NVIDIA Tesla K80 GPU on GCP:
 
 | Model                        | Hidden Dim | Parameters | SQuAD Dev EM/F1 | Train & Test Time |     Output File    |
 |------------------------------|:----------:|:----------:|:---------------:|:-----------------:|:------------------:|
-| [`baseline_small_squad.pt`](https://utexas.box.com/s/ux8shb4ni3g5vzwsbifsrwnk3iiclmra)  |     128    |  16M  |   47.21/59.81   |       9m 47s      |       [NA]
-| [`baseline_medium_squad.pt`](https://utexas.box.com/s/gsu2ba5xtpv9jrnhprcotu3mzjikelug) |     256    |  18M  |   48.64/61.19   |      13m 50s      |       [NA]
-| [`baseline_large_squad.pt`](https://utexas.box.com/s/acoda71r8drbkad1jeon01sj4awquf7h)  |     512    |  25M  |   49.00/61.65   |      24m 25s      |       [NA]
+| [`baseline_small_squad.pt`](http://cs.utexas.edu/~gdurrett/courses/online-course/fp/baseline_small_squad.pt)  |     128    |  16M  |   47.21/59.81   |       9m 47s      |       [NA]
 
 Usage is largely the same as the previous examples; make sure to pass in the appropriate hidden dimension when invoking the script. For example, to use the baseline-small model for testing:
 
