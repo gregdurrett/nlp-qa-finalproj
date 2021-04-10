@@ -8,7 +8,7 @@ if which -s wget; then
   SAVE_ARG=''
   SAVE_TO_ARG='-O'
 else
-  WGET_CMD='curl'
+  WGET_CMD='curl -L' # -L to follow redirects
   SAVE_ARG='-O'
   SAVE_TO_ARG='-o'
 fi
