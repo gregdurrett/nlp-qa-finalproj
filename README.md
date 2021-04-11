@@ -38,7 +38,7 @@ $ source venv/bin/activate
 $ pip install -r requirements.txt
 ```
 
-Finally, `./setup.sh` will download the QA datasets (SQuAD, NewsQA, BioASQ) into `datasests/` and GloVe embeddings into `glove/`. By default, we use the 300-dimensional embeddings (`glove.6B.300d.txt`), but other embeddings are also provided for your convenience. If you don't have wget (e.g., MacOS doesn't by default), you can just manually download the files from the URLs (first argument) and put them in the expected locations.
+Finally, `./setup.sh` will download the QA datasets (SQuAD, NewsQA, BioASQ) into `datasests/` and GloVe embeddings into `glove/`. By default, we use the 300-dimensional embeddings (`glove.6B.300d.txt`), but other embeddings are also provided for your convenience. If you don't have wget (e.g., macOS doesn't by default), it will attempt to use curl (which macOS does have). If neither work, you can just manually download the files from the URLs (first argument) and put them in the expected locations.
 
 ### File Descriptions
 
