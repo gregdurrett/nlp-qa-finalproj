@@ -178,7 +178,7 @@ We provide the following pre-trained baseline model. Models are benchmarked usin
 
 | Model                        | Hidden Dim | Parameters | SQuAD Dev EM/F1 | Train & Test Time |     Output File    |
 |------------------------------|:----------:|:----------:|:---------------:|:-----------------:|:------------------:|
-| [`baseline_small_squad.pt`](http://cs.utexas.edu/~gdurrett/courses/online-course/fp/baseline_small_squad.pt)  |     128    |  16M  |   47.21/59.81   |       9m 47s      |       [NA]
+| [`baseline_small_squad.pt`](https://cs.utexas.edu/~gdurrett/courses/online-course/fp/baseline_small_squad.pt)  |     128    |  16M  |   47.21/59.81   |       9m 47s      |       [NA]
 
 Usage is largely the same as the previous examples; make sure to pass in the appropriate hidden dimension when invoking the script. For example, to use the baseline-small model for testing:
 
