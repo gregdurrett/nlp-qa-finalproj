@@ -134,7 +134,7 @@ class BilinearOutput(nn.Module):
         p_scores.data.masked_fill_(p_mask.data, -float('inf'))
         return p_scores  # [batch_size, p_len]
 
-
+# TODO augment to use SPINN
 class BaselineReader(nn.Module):
     """
     Baseline QA Model
