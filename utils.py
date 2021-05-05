@@ -11,6 +11,8 @@ import pickle
 
 import torch
 from tqdm import tqdm
+import numpy as np
+
 
 
 def cuda(args, tensor):
@@ -136,3 +138,99 @@ def search_span_endpoints(start_probs, end_probs, window=15):
                 max_end_index = end_index
 
     return (max_start_index, max_end_index)
+def top_n_spans(start_probs, end_probs, question, passage, window, n=4):
+    top_k_starts = start_probs.argsort()[-min(2,len(start_probs)):][::-1]
+
+    span_list = []
+    for idx in top_k_starts:
+        end_possibilities = end_probs[idx:]
+        top_ends = end_possibilities.argsort()[-min(n//2,len(end_possibilities)):][::-1]
+        top_ends += idx
+        for e_idx in top_ends:
+            span_lst.append((idx,e_idx))
+    return span_list
+
+
+def find_ngrams(input_list, n):
+    return zip(*[input_list[i:] for i in range(n)])    
+
+
+def find_ngrams_upto(input_list, n):
+    multigrams = [find_ngrams(input_list,i) for i in range(1,min(n + 1,len(input_list)))]
+    multigrams = set(multigrams)
+    return multigrams
+
+def top_n_spans(start_probs, end_probs, question, passage, window, n=4):
+    top_k_starts = start_probs.argsort()[-min(2,len(start_probs)):][::-1]
+
+    span_list = []
+    for idx in top_k_starts:
+        end_possibilities = end_probs[idx:]
+        top_ends = end_possibilities.argsort()[-min(n//2,len(end_possibilities)):][::-1]
+        top_ends += idx
+        for e_idx in top_ends:
+            span_lst.append((idx,e_idx))
+    return span_list
+
+
+def unigram_span_endpoints(start_probs,end_probs,question,passage,window=15):
+
+    start_probs = np.array(start_probs)
+    end_probs = np.array(end_probs)
+    top_spans = top_n_spans(start_probs,end_probs,question,passage,window)
+
+    #Normal
+    for span in top_spans:
+        start, end = span
+        words = passage[start:end + 1]
+    return top_spans[0][0], top_spans[0][1]
+
+    #question length restriction
+    # for span in top_spans:
+    #     start, end = span
+    #     delta = end - start
+    #     if delta < question.length:
+    #        words = passage[start:end + 1]
+    #     else:
+    #        words = passage[start:start+question.length]
+    # return top_spans[0][0], top_spans[0][1]
+
+
+def multigram_span_endpoints(start_probs, end_probs,question,passage,window=15):
+    q_multigrams = find_ngrams_upto(question, 2)
+    start_probs = np.array(start_probs)
+    end_probs = np.array(end_probs)
+    top_spans = top_n_spans(start_probs, end_probs, question, passage, window)
+    
+    best_overlap = set()
+    best_start = top_spans[0][0]
+    best_end = top_spans[0][1]
+
+    ## Normal
+    for span in top_spans:
+        start, end = span
+        delta = end - start
+        words = passage[start:end + 1]
+        multigrams = find_ngrams_upto(words, 2)
+        overlap = multigrams.intersection(q_multigrams)
+        if len(overlap) > len(best_overlap):
+            best_overlap = overlap
+            best_start = start
+            best_end = end
+    return best_start, best_end
+
+    ##  Question length restriction
+    # for span in top_spans:
+    #     start, end = span
+    #     delta = end - start
+    #     if delta < question.length:
+    #         words = passage[start:end + 1]
+    #     else:
+    #         words = passage[start:start+question.length]
+    #     multigrams = find_ngrams_upto(words, 2)
+    #     overlap = multigrams.intersection(q_multigrams)
+    #     if len(overlap) > len(best_overlap):
+    #         best_overlap = overlap
+    #         best_start = start
+    #         best_end = end
+    # return best_start, best_end
