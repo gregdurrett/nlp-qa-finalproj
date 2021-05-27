@@ -199,31 +199,9 @@ $ python3 main.py \
 
 [Google Cloud Platform (GCP)](https://cloud.google.com/) offers $300 in credits for 365 days towards most of their compute services, notably including access to GPUs. Using these resources is strictly optional. However, if you plan to pursue a final project that requires intensive model development and re-training the model and do not otherwise have access to a GPU, this resource may be very helpful. **It is critical that you turn off your GPUs when they are not being used to avoid burning through the credits quickly.**
 
-To begin, follow the instructions on their website to begin your free trial. Note that although a credit card must be supplied, you will not be charged, and the billing account will be automatically deactivated once the credits expire. Once you are logged in to the GCP console, the instructions below will show you how to setup an instance with a Tesla K80 GPU:
+To begin, follow the instructions on their website to begin your free trial. Note that although a credit card must be supplied, you will not be charged, and the billing account will be automatically deactivated once the credits expire.
 
-**Upgrade the account to enable GPU usage.** By default, the free trial account does not support GPU usage, but if a valid credit card is on file, you will be able to "upgrade" your account. Go to `IAM & Admin > Quotas` and click on the upgrade account link at the top of the page. Filter the metric list to `GPUs (all regions)`, select the associated service, and submit a request to increase the quota. The request should be fulfilled in a matter of minutes -- you will be notified via your Gmail inbox.
-
-<p align="center">
-	<img width="90%" src="https://i.imgur.com/3gcS7es.png"/>
-</p>
-
-**Create a VM instance.** Go to `Compute Engine > VM Instances` and click on "create VM instance." We recommend using `us-west1` for the zone type as `us-central1` does not support GPU instances. Next, there are two main settings that need to tuned. First, change the boot disk to "Deep Learning on Linux" and set the version to an image that supports PyTorch 1.4. You may also increase the boot disk size substantially to 100GB.
-
-<p align="center">
-	<img width="75%" src="https://i.imgur.com/un9PlrB.png"/>
-</p>
-
-Second, adjust the machine configuration. Select a general-purpose machine with 8 CPUs and 30GB memory. Then, add 1 NVIDIA Tesla K80 GPU to the instance. While more powerful GPUs, such as an NVIDIA V100, can be added instead, it will raise the overall cost per hour substantially.
-
-<p align="center">
-	<img width="50%" src="https://i.imgur.com/ONs0Izy.png"/>
-</p>
-
-Finally, create the instance. It will take a couple of minutes to start up. If there are any errors, it will pop up in the notification box on the top of the page; a quick Google search will likely resolve any issues that come up. When started successfully, the instance should look something like this:
-
-<p align="center">
-	<img width="75%" src="https://i.imgur.com/Cu7r50l.png"/>
-</p>
+You will need to upgrade your account to enable GPU usage and create a VM instance as the first steps. This workflow changes somewhat frequently, so you'll have to follow the latest instructions from GCP for how to do this. If you have trouble with these steps, contact the course staff for assistance.
 
 **SSH into the instance.** Use the cloud SSH to log into the machine. Before starting development, there are a couple of checks we will do to make sure the GPU has been installed successfully. First, enter `nvidia-smi` in the terminal; you should see a Tesla K80 GPU occupying card 0. Second, enter the following commands in the Python REPL to ensure PyTorch can use the GPU:
 
